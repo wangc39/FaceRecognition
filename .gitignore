@@ -1,0 +1,8 @@
+datasets/*
+lfw/*
+logs/*
+model_data/*
+常见问题汇总.md
+cls_train.txt
+train copy.py
+train111.py
