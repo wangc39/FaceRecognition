@@ -5,6 +5,7 @@ import torch
 from thop import clever_format, profile
 from torchsummary import summary
 
+import time
 from nets.facenet import Facenet
 
 if __name__ == "__main__":
@@ -27,3 +28,15 @@ if __name__ == "__main__":
     flops, params   = clever_format([flops, params], "%.3f")
     print('Total GFLOPS: %s' % (flops))
     print('Total params: %s' % (params))
+
+
+    # time test
+    start = time.time()
+    dummy_input     = torch.randn(6, 3, input_shape[0], input_shape[1]).to(device)
+
+    model = model.to(device)
+    
+    res = model(dummy_input)
+
+    print("Spent time {}".format(time.time() - start))
+

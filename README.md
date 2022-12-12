@@ -34,9 +34,32 @@
 
 ### 深度学习
 
-本次实验在 FaceNet 的基础上开展，FaceNet(FaceNet: A Unified Embedding for Face Recognition and Clustering)是谷歌的一篇关于人脸识别的研究工作。该方法定义了一个三分类的loss用于人脸识别，目的是让类内的同一人脸尽可能地相似（即类内间距离小），不同类别的人脸尽可能地不同（即类间距离大）。如图所示，通过学习后，正样本对距离更近，负样本对距离更远。
+本次实验在 FaceNet 的基础上开展，FaceNet(FaceNet: A Unified Embedding for Face Recognition and Clustering)是谷歌的一篇关于人脸识别的研究工作。
 
-FaceNet的整体架构如下所示：
+#### 1. FaceNet 相关介绍
+FaceNet是一个神经网络，将人脸编码成 $ R^{128} $的向量。通过比较两张人脸得到的人脸向量，从而判定两张人脸是否属于同一人。
+
+FaceNet定义了三分类的损失函数(triplet loss function)用于人脸识别，在训练时，包含三张人脸数据，第一张人脸数据为原始数据，第二张为同一张人脸的不同角度数据，第三张为不同的人脸数据。在训练时，让类内的同一人脸尽可能地相似（即类内间距离小），不同类别的人脸尽可能地不同（即类间距离大）。如图所示，通过学习后，正样本对距离更近，负样本对距离更远。
+
+![例子](./img/face1.jpg)
+
+
+#### 2. Facenet 网络架构
+Facenet的网络架构如图所示，输入的图片通过 Deep Architecture 之后输出一个人脸向量，用于表征当前人脸的特征。同时按照上述方法计算三分类损失，用于模型的训练。本次实验中采用的 Deep Architecture 主要有  Resnet 和 Mobinet 
+
+![Framework](./img/Framework.jpg)
+
+
+##### 2.1 Resnet
+
+Resnet 相关介绍...
+
+
+##### 2.2 
+
+Mobinet 相关介绍
+
+
 
 
 

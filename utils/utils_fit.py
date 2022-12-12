@@ -50,9 +50,7 @@ def fit_one_epoch(model_train, model, loss_history, loss, optimizer, epoch, epoc
                 _triplet_loss   = loss(outputs1, Batch_size)
                 _CE_loss        = nn.NLLLoss()(F.log_softmax(outputs2, dim = -1), labels)
                 _loss           = _triplet_loss + _CE_loss
-            #----------------------#
-            #   反向传播
-            #----------------------#
+
             scaler.scale(_loss).backward()
             scaler.step(optimizer)
             scaler.update()  
@@ -107,7 +105,8 @@ def fit_one_epoch(model_train, model, loss_history, loss, optimizer, epoch, epoc
             pbar.update(1)
         
     if lfw_eval_flag:
-        print("开始进行LFW数据集的验证。")
+        if local_rank == 0:
+            print("开始进行LFW数据集的验证。")
         labels, distances = [], []
         for _, (data_a, data_p, label) in enumerate(test_loader):
             with torch.no_grad():

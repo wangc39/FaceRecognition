@@ -22,6 +22,7 @@ if __name__ == "__main__":
     ### ddp setting
     Cuda            = True
     #  CUDA_VISIBLE_DEVICES=0,1 python -m torch.distributed.launch --nproc_per_node=2 train.py
+    #  CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 python -m torch.distributed.launch --nproc_per_node=8 train.py
     distributed     = True
     sync_bn         = True
     fp16            = True
@@ -31,7 +32,7 @@ if __name__ == "__main__":
     input_shape     = [160, 160, 3]
 
     # model
-    backbone        = "mobilenet" # inception_resnetv1
+    backbone        = "inception_resnetv1" # inception_resnetv1 mobilenet
 
     #   model_path = ''，pretrain = True，此时仅加载主干。
     #   model_path = ''，pretrain = Fasle，此时从0开始训练。
